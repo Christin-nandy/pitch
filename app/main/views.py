@@ -43,7 +43,22 @@ def product():
     '''
     title = 'Product Pitches'
     pitches= Pitch.get_all_pitches()
-    return render_template('product.html', title = title, pitches= pitches )
+    return render_template('product.html', title = title, pitches= pitches)
+
+#  end of category root functions
+
+@main.route('/pitch/<int:pitch_id>')
+def pitch(pitch_id):
+
+    '''
+    View pitch page function that returns the pitch details page and its data
+    '''
+    found_pitch= get_pitch(pitch_id)
+    title = pitch_id
+    pitch_comments = Comment.get_comments(pitch_id)
+
+    return render_template('pitch.html',title= title ,found_pitch= found_pitch, pitch_comments= pitch_comments)
+
      
 
 
