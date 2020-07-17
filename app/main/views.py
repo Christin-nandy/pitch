@@ -139,10 +139,19 @@ def profile(uname):
 @main.route('/view/comment/<int:id>')
 def view_comments(id):
     '''
-    Function that returs  the comments belonging to a particular pitch
+    Function that returns  the comments belonging to a particular pitch
     '''
     comments = Comment.get_comments(id)
     return render_template('view_comments.html',comments = comments, id=id)
+
+@main.route('/test/<int:id>')  
+def test(id):
+    '''
+    this is route for basic testing
+    '''
+    pitch =Pitch.query.filter_by(id=1).first()
+    return render_template('test.html',pitch= pitch)
+
 
 
 
