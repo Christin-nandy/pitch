@@ -1,6 +1,8 @@
 import unittest
 from app.models import Comment,User
 from app import db
+from app.models import User
+from app.models import Pitch  
 
 
 class CommentTest(unittest.TestCase):
@@ -33,6 +35,7 @@ class CommentTest(unittest.TestCase):
         self.assertTrue(len(got_comments) == 1)
 
 class PitchTest(unittest.TestCase):
+    Pitch = Pitch
     '''
     Test Class to test the behaviour of the Pitch class
     '''
@@ -44,4 +47,19 @@ class PitchTest(unittest.TestCase):
         self.new_pitch = Pitch(133,'killed by excelence')
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_pitch,Pitch))        
+        self.assertTrue(isinstance(self.new_pitch,Pitch))
+
+class UserModelTest(unittest.TestCase):
+
+    def setUp(self):
+        self.new_user = User(password = 'banana')
+
+    def test_password_setter(self):
+        self.assertTrue(self.new_user.pass_secure is not None)
+
+    def test_no_access_password(self):
+            with self.assertRaises(AttributeError):
+                self.new_user.password
+
+    def test_password_verification(self):
+        self.assertTrue(self.new_user.verify_password('banana'))                
