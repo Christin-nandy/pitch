@@ -59,6 +59,16 @@ def pitch(pitch_id):
 
     return render_template('pitch.html',title= title ,found_pitch= found_pitch, pitch_comments= pitch_comments)
 
+@main.route('/search/<pitch_name>')
+def search(pitch_name):
+    '''
+    View function to display the search results
+    '''
+    searched_pitches = search_pitch(pitch_name)
+    title = f'search results for {pitch_name}'
+
+    return render_template('search.html',pitches = searched_pitches)
+
      
 
 
