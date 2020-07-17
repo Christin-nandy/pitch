@@ -23,4 +23,16 @@ def select_line():
 
     pitches= Pitch.get_all_pitches()
 
-    return render_template('select_lines.html', title = title, pitches= pitches )    
+    return render_template('select_lines.html', title = title, pitches= pitches)
+
+@main.route('/promotion/pitches/')
+def promotion():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Promotion Pitches'
+
+    pitches= Pitch.get_all_pitches()
+
+    return render_template('promotion.html', title = title, pitches= pitches )
+
