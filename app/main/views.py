@@ -1,6 +1,11 @@
 from flask import render_template, request, redirect, url_for, abort  
 from . import main 
 from .forms import CommentsForm, UpdateProfile, PitchForm, UpvoteForm
+from ..models import Comment, Pitch, User 
+from flask_login import login_required, current_user
+from .. import db,photos
+import markdown2
+
 
 @main.route('/')
 def index():
