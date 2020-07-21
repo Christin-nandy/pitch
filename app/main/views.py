@@ -3,7 +3,6 @@ from . import main
 from .forms import CommentsForm, UpdateProfile, PitchForm, UpvoteForm
 from ..models import Comment, Pitch, User 
 from flask_login import login_required, current_user
-from .. import db,photos
 import markdown2
 
 
@@ -19,16 +18,16 @@ def index():
 
     return render_template('index.html', title = title, pitches= pitches)
 
-@main.route('/select_lines/pitches/')
-def select_line():
+@main.route('/pick_up_lines/pitches/')
+def pick_up_line():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Select Lines'
+    title = 'Pickup Lines'
 
     pitches= Pitch.get_all_pitches()
 
-    return render_template('select_lines.html', title = title, pitches= pitches)
+    return render_template('pick_up_lines.html', title = title, pitches= pitches)
 
 @main.route('/promotion/pitches/')
 def promotion():

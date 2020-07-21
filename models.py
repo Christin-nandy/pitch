@@ -3,9 +3,11 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
@@ -63,6 +65,7 @@ class Pitch(db.Model):
         category passed to it
         '''
         return Pitch.query.filter_by(category_id= cat_id)
+        
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer,primary_key = True)
@@ -83,6 +86,7 @@ class Comment(db.Model):
     def get_comments(cls,id):
         comments = Comment.query.filter_by(pitch_id=id).all()
         return comments
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer,primary_key = True)
@@ -90,6 +94,7 @@ class Role(db.Model):
     users = db.relationship('User',backref = 'role',lazy="dynamic")
     def __repr__(self):
         return f'User {self.name}'
+
 class PitchCategory(db.Model):
     '''
     Function that defines different categories of pitches

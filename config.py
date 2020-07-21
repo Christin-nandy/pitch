@@ -4,7 +4,7 @@ class Config:
     '''
 
     SECRET_KEY = 'andrekusandras14'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://Christine:Christine14@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:access@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
     #  email configurations
@@ -21,7 +21,7 @@ class Config:
     SIMPLEMDE_USE_CDN = True
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://Christine:Christine14@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:access@localhost/pitch'
 
 
 class ProdConfig(Config):
