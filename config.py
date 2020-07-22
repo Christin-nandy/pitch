@@ -1,10 +1,12 @@
+import os
+
 class Config:
     '''
     General configuration parent class
     '''
 
     SECRET_KEY = 'andrekusandras14'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:access@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
     #  email configurations
